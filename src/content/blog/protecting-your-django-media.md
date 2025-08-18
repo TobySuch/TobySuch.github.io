@@ -3,7 +3,7 @@ title: "Protecting Your Django Media"
 description: "Lorem ipsum dolor sit amet"
 pubDate: "2022-04-28"
 updatedDate: "2025-08-18"
-heroImage: "../../assets/blog-placeholder-3.jpg"
+heroImage: "../../assets/blog/protecting-your-django-media/hero.jpg"
 ---
 
 Typically with your Django site, you would leave it up to your web server to serve up your user generated media files, as recommended by the docs. And this would be fine for a small site where user's posts can be seen by everyone and there is no need to hide your media. However, what about if your users only wanted to share their uploaded photo with a select few? How about logging in a database whenever an asset is accessed? Or just hiding your servers internal paths? There are many reasons you may want a media request to go through your code, rather than being served straight from the web server. This has been one of the challenges I have hit while working on [Shifter](https://github.com/TobySuch/Shifter). Luckily for us, all the major HTTP servers (Apache, NGINX etc.) have a nifty way of handling requests like this, and it isn't much more work to set up!
