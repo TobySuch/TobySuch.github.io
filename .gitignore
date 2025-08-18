@@ -1,13 +1,24 @@
-# project
-_site
-.sass-cache
-.vagrant
+# build output
+dist/
+# generated types
+.astro/
 
-# general
+# dependencies
+node_modules/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+
+# environment variables
+.env
+.env.production
+
+# macOS-specific files
 .DS_Store
-Thumbs.db
-ehthumbs.db
 
-Gemfile.lock
-
-beautiful-jekyll-theme-*.gem
+# jetbrains setting folder
+.idea/
