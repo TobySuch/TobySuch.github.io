@@ -1,0 +1,113 @@
+---
+import { Image } from 'astro:assets';
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import profilePic from '../assets/profile_pic.jpg';
+import blogSeeAll from '../assets/blog-see-all.jpg';
+import { getCollection } from 'astro:content';
+import FormattedDate from '../components/FormattedDate.astro';
+
+
+const blogPosts = (await getCollection('blog'))
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+	.slice(0, 3);
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<style>
+			ul {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 2rem;
+				list-style-type: none;
+				margin: 0;
+				padding: 0;
+			}
+			ul li {
+				width: calc(50% - 1rem);
+			}
+			ul li * {
+				text-decoration: none;
+				transition: 0.2s ease;
+			}
+			ul li img {
+				margin-bottom: 0.5rem;
+				border-radius: 12px;
+			}
+			ul li a {
+				display: block;
+			}
+			.blog-title {
+				margin: 0;
+				color: rgb(var(--black));
+				line-height: 1;
+			}
+			.blog-date {
+				margin: 0;
+				color: rgb(var(--gray));
+			}
+			ul li a:hover h4,
+			ul li a:hover .blog-date {
+				color: rgb(var(--accent));
+			}
+			ul a:hover img {
+				box-shadow: var(--box-shadow);
+			}
+			@media (max-width: 720px) {
+				ul {
+					gap: 0.5em;
+				}
+				ul li {
+					width: 100%;
+					text-align: center;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<h1 style="text-align: center;">Toby Such</h1>
+			<p style="text-align: center;">
+				<Image src={profilePic} alt="Picture of Toby" width="200" height="200" />
+			<p>
+				Hi, I’m Toby 👋 A Senior Software Engineer at Adobe with a focus on cloud reliability, observability, and automation. I love exploring, building and creating, both in the tech world and away from it!
+			</p>
+			<p>
+				Check out my <a href="/blog">blog</a> for thoughts on tech, my <a href="https://github.com/TobySuch">GitHub</a> for my side projects, or connect with me on <a href="https://www.linkedin.com/in/tobysuch/">LinkedIn</a>.
+			</p>
+			{ blogPosts.length > 0 && (
+				<section>
+					<h2>Latest Blog Posts</h2>
+					<ul>
+						{blogPosts.map((post) => (
+							<li>
+								<a href={`/blog/${post.id}`}>
+									{post.data.heroImage && (
+										<Image width={720} height={360} src={post.data.heroImage} alt="" />
+									)}
+									<h4 class="blog-title">{post.data.title}</h4>
+									<p class="blog-date">
+										<FormattedDate date={post.data.pubDate} />
+									</p>
+								</a>
+							</li>
+						))}
+						<li>
+							<a href={`/blog`}>
+								<Image width={720} height={360} src={blogSeeAll} alt="" />
+								<h4 class="blog-title">See All</h4>
+							</a>
+						</li>
+					</ul>
+				</section>
+			)}
+		</main>
+		<Footer />
+	</body>
+</html>
