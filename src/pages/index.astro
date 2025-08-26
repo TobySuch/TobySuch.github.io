@@ -35,7 +35,8 @@ const blogPosts = (await getCollection('blog'))
 				text-decoration: none;
 				transition: 0.2s ease;
 			}
-			ul li img {
+			ul li img,
+			ul li .blog-see-all-hero {
 				margin-bottom: 0.5rem;
 				border-radius: 12px;
 			}
@@ -55,7 +56,8 @@ const blogPosts = (await getCollection('blog'))
 			ul li a:hover .blog-date {
 				color: rgb(var(--accent));
 			}
-			ul a:hover img {
+			ul a:hover img,
+			ul a:hover .blog-see-all-hero {
 				box-shadow: var(--box-shadow);
 			}
 			@media (max-width: 720px) {
@@ -66,6 +68,22 @@ const blogPosts = (await getCollection('blog'))
 					width: 100%;
 					text-align: center;
 				}
+			}
+			/* Blog See All Button */
+			.blog-see-all-hero {
+				background: linear-gradient(135deg, #0ea5e9, #8b5cf6);
+				color: white;
+
+				aspect-ratio: 2 / 1;
+				width: 100%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+
+				margin-bottom: 1em !important;
+			}
+			.arrow {
+				filter: drop-shadow(0 1px 2px rgba(0,0,0,0.25));
 			}
 		</style>
 	</head>
@@ -99,8 +117,12 @@ const blogPosts = (await getCollection('blog'))
 							</li>
 						))}
 						<li>
-							<a href={`/blog`}>
-								<Image width={720} height={360} src={blogSeeAll} alt="" />
+							<a href="/blog">
+								<div class="blog-see-all-hero">
+									<svg class="arrow" viewBox="0 0 24 24" width="80" height="80" aria-hidden="true">
+										<path d="M5 12h17M16 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+									</svg>
+								</div>
 								<h4 class="blog-title">See All</h4>
 							</a>
 						</li>
