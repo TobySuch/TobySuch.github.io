@@ -1,12 +1,12 @@
 {
-  "name": "",
+  "name": "tobysuch.github.io",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "sastro"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.3",
