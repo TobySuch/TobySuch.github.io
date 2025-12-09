@@ -12,6 +12,9 @@ import image404 from '../assets/404.png';
 <html lang="en">
 	<head>
 		<BaseHead title={"Page Not Found"} description={SITE_DESCRIPTION} />
+
+        <!-- Plausible Analytics for 404 page -->
+        <script>document.addEventListener('DOMContentLoaded', function () { plausible('404'); });</script>
 	</head>
 	<body>
 		<Header />
