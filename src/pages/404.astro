@@ -1,0 +1,32 @@
+---
+import { Image } from 'astro:assets';
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import image404 from '../assets/404.png';
+
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={"Page Not Found"} description={SITE_DESCRIPTION} />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<h1 style="text-align: center;">Page Not Found!</h1>
+			<p style="text-align: center;">
+				<Image src={image404} alt="404 Page Not Found"  />
+			<p>
+				Oops! The page you’re looking for has wandered off.
+			</p>
+			<p>
+				Do you want to go back to the <a href="/">homepage</a>?
+			</p>
+
+		</main>
+		<Footer />
+	</body>
+</html>
