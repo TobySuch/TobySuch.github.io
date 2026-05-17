@@ -1,0 +1,67 @@
+---
+# Required fields
+title: "My Project Name"
+description: "A short description of what this project does and why it's interesting."
+pubDate: "2026-01-01"
+
+# Optional fields — uncomment and fill in as needed:
+# updatedDate: "2026-06-01"
+# heroImage: "../../assets/projects/my-project/hero.png"
+# siteUrl: "https://myproject.example.com"
+# repoUrl: "https://github.com/TobySuch/my-project"
+# tags: ["Python", "FastAPI", "PostgreSQL"]
+---
+
+{/*
+  HOW TO USE THIS TEMPLATE
+  ========================
+  1. Copy this file and rename it (e.g. my-cool-project.mdx)
+  2. Fill in the frontmatter above
+  3. Add images to src/assets/projects/<project-name>/
+  4. Import components below for Astro islands (interactive UI)
+  5. Write your content using Markdown and JSX
+
+  ASTRO ISLANDS
+  Astro islands let you embed interactive components in MDX pages.
+  Import a framework component (React, Svelte, Vue, etc.) and use a
+  client:* directive to hydrate it in the browser:
+    - client:load   → hydrate immediately
+    - client:idle   → hydrate when browser is idle
+    - client:visible → hydrate when scrolled into view
+
+  Example:
+    import Counter from '../../components/Counter.jsx';
+    <Counter client:load />
+
+  IMAGES
+  Import images from src/assets/ and use the <Image> component
+  for automatic optimisation:
+    import { Image } from 'astro:assets';
+    import screenshot from '../../assets/projects/my-project/screenshot.png';
+    <Image src={screenshot} alt="Description" width={720} height={400} />
+*/}
+
+import { Image } from 'astro:assets';
+
+## Overview
+
+Describe what this project is and what problem it solves.
+
+## Features
+
+- Feature one
+- Feature two
+- Feature three
+
+## How it works
+
+Walk through the interesting technical details here. You can embed images inline:
+
+```
+import screenshot from '../../assets/projects/my-project/screenshot.png';
+<Image src={screenshot} alt="Screenshot" width={720} height={400} />
+```
+
+## What I learned
+
+Reflect on interesting challenges or takeaways from building this.
