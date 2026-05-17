@@ -1,0 +1,56 @@
+---
+# Required fields
+title: "Earlybird"
+description: "Personal newsletter aggregator and podcast generator"
+pubDate: "2026-04-11"
+
+# Optional fields — uncomment and fill in as needed:
+updatedDate: "2026-05-17"
+heroImage: "../../assets/projects/earlybird/hero.png"
+# siteUrl: "https://myproject.example.com"
+repoUrl: "https://github.com/TobySuch/earlybird"
+tags: ["Podcast", "LLM", "Newsletter","Python", "FastAPI", "PostgreSQL"]
+---
+
+{/*
+  HOW TO USE THIS TEMPLATE
+  ========================
+  1. Copy this file and rename it (e.g. my-cool-project.mdx)
+  2. Fill in the frontmatter above
+  3. Add images to src/assets/projects/<project-name>/
+  4. Import components below for Astro islands (interactive UI)
+  5. Write your content using Markdown and JSX
+
+  ASTRO ISLANDS
+  Astro islands let you embed interactive components in MDX pages.
+  Import a framework component (React, Svelte, Vue, etc.) and use a
+  client:* directive to hydrate it in the browser:
+    - client:load   → hydrate immediately
+    - client:idle   → hydrate when browser is idle
+    - client:visible → hydrate when scrolled into view
+
+  Example:
+    import Counter from '../../components/Counter.jsx';
+    <Counter client:load />
+
+  IMAGES
+  Import images from src/assets/ and use the <Image> component
+  for automatic optimisation:
+    import { Image } from 'astro:assets';
+    import screenshot from '../../assets/projects/my-project/screenshot.png';
+    <Image src={screenshot} alt="Description" width={720} height={400} />
+*/}
+
+import { Image } from 'astro:assets';
+
+## Overview
+
+Personal newsletter aggregator and podcast generator. Fetches newsletters from Gmail, uses an LLM to filter and summarise stories based on your interests, produces a daily digest, and optionally generates a TTS podcast episode.## Features
+
+## Features
+- Connect your Gmail account to fetch newsletters
+- Use an LLM to filter and summarise stories based on your interests
+- Produce a daily digest of relevant stories
+- Optionally generate a TTS podcast episode of the digest
+- Web interface to view digests, listen to podcasts, and manage settings
+- Listen to your personalised podcasts in your favourite podcast app via RSS feed
