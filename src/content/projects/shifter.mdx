@@ -1,0 +1,56 @@
+---
+# Required fields
+title: "Shifter"
+description: "A simple, self-hosted file-sharing web app "
+pubDate: "2022-11-27"
+
+# Optional fields — uncomment and fill in as needed:
+updatedDate: "2026-05-17"
+heroImage: "../../assets/projects/shifter/hero.png"
+# siteUrl: "https://myproject.example.com"
+repoUrl: "https://github.com/TobySuch/Shifter"
+tags: ["Python", "Django", "PostgreSQL"]
+---
+
+{/*
+  HOW TO USE THIS TEMPLATE
+  ========================
+  1. Copy this file and rename it (e.g. my-cool-project.mdx)
+  2. Fill in the frontmatter above
+  3. Add images to src/assets/projects/<project-name>/
+  4. Import components below for Astro islands (interactive UI)
+  5. Write your content using Markdown and JSX
+
+  ASTRO ISLANDS
+  Astro islands let you embed interactive components in MDX pages.
+  Import a framework component (React, Svelte, Vue, etc.) and use a
+  client:* directive to hydrate it in the browser:
+    - client:load   → hydrate immediately
+    - client:idle   → hydrate when browser is idle
+    - client:visible → hydrate when scrolled into view
+
+  Example:
+    import Counter from '../../components/Counter.jsx';
+    <Counter client:load />
+
+  IMAGES
+  Import images from src/assets/ and use the <Image> component
+  for automatic optimisation:
+    import { Image } from 'astro:assets';
+    import screenshot from '../../assets/projects/my-project/screenshot.png';
+    <Image src={screenshot} alt="Description" width={720} height={400} />
+*/}
+
+import { Image } from 'astro:assets';
+
+## Overview
+
+Shifter is a simple self-hosted file-sharing web app built using Django and Tailwind. It allows you to quickly and easily upload files and share download links with others.
+## Features
+
+- Upload files and share download links with others.
+- Upload multiple files and automatically create a zip archive.
+- Files are automatically deleted once they expire.
+- Manage your uploaded files, delete them early.
+- Create multiple accounts to allow others to upload files.
+- Admin interface for managing site settings such as maximum file size and expiry time.

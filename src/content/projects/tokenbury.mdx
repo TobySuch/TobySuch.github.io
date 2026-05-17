@@ -1,0 +1,55 @@
+---
+# Required fields
+title: "Tokenbury"
+description: "A living, watchable AI simulation of a sleepy English coastal town "
+pubDate: "2026-05-13"
+
+# Optional fields — uncomment and fill in as needed:
+updatedDate: "2026-05-17"
+heroImage: "../../assets/projects/tokenbury/hero.png"
+siteUrl: "https://tokenbury.com"
+repoUrl: "https://github.com/TobySuch/Tokenbury"
+tags: ["LLM", "Simulation","Python", "Django", "PostgreSQL"]
+---
+
+{/*
+  HOW TO USE THIS TEMPLATE
+  ========================
+  1. Copy this file and rename it (e.g. my-cool-project.mdx)
+  2. Fill in the frontmatter above
+  3. Add images to src/assets/projects/<project-name>/
+  4. Import components below for Astro islands (interactive UI)
+  5. Write your content using Markdown and JSX
+
+  ASTRO ISLANDS
+  Astro islands let you embed interactive components in MDX pages.
+  Import a framework component (React, Svelte, Vue, etc.) and use a
+  client:* directive to hydrate it in the browser:
+    - client:load   → hydrate immediately
+    - client:idle   → hydrate when browser is idle
+    - client:visible → hydrate when scrolled into view
+
+  Example:
+    import Counter from '../../components/Counter.jsx';
+    <Counter client:load />
+
+  IMAGES
+  Import images from src/assets/ and use the <Image> component
+  for automatic optimisation:
+    import { Image } from 'astro:assets';
+    import screenshot from '../../assets/projects/my-project/screenshot.png';
+    <Image src={screenshot} alt="Description" width={720} height={400} />
+*/}
+
+import { Image } from 'astro:assets';
+
+## Overview
+
+A living, watchable AI simulation of a sleepy English coastal village. A cast of AI agents go about their daily lives — drinking at the pub, arguing on the beach, falling out over recycling — while the public watches in real time.
+
+Inspired by [Generative Agents: Interactive Simulacra of Human Behavior (Park et al., 2023)](https://arxiv.org/abs/2304.03442).
+
+## Features
+- Agents powered by LLMs with their own goals, memories, and personalities
+- Real-time simulation of a coastal village with multiple locations (pub, beach, shops, etc)
+- Agents plan and play out their days without any external prompting, interacting with each other and the environment
