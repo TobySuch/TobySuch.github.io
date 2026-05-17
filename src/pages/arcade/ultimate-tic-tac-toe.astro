@@ -1,0 +1,49 @@
+---
+import App from '../../components/arcade/ultimate-tic-tac-toe/App';
+import '../../components/arcade/ultimate-tic-tac-toe/game.css';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="canonical" href="https://www.tobysuch.uk/arcade/ultimate-tic-tac-toe" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>Ultimate Tic-Tac-Toe</title>
+    <meta name="title" content="Ultimate Tic-Tac-Toe" />
+    <meta name="description" content="Play Ultimate Tic-Tac-Toe — a strategic twist on the classic game where each move determines which board your opponent must play in next." />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:title" content="Ultimate Tic-Tac-Toe" />
+    <meta property="og:description" content="Play Ultimate Tic-Tac-Toe — a strategic twist on the classic game where each move determines which board your opponent must play in next." />
+
+    <meta property="twitter:card" content="summary" />
+    <meta property="twitter:url" content={Astro.url} />
+    <meta property="twitter:title" content="Ultimate Tic-Tac-Toe" />
+    <meta property="twitter:description" content="Play Ultimate Tic-Tac-Toe — a strategic twist on the classic game where each move determines which board your opponent must play in next." />
+
+    <script defer data-domain="tobysuch.uk" src="https://plausible.tobysuch.uk/js/script.js"></script>
+    <style>
+      footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        text-align: center;
+        padding: 0.5rem;
+        font-size: 0.75rem;
+        color: rgb(71, 85, 105);
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <App client:load />
+    <footer>© Copyright Toby Such 2026. All rights reserved.</footer>
+  </body>
+</html>
