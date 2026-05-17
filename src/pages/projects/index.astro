@@ -40,9 +40,9 @@ const projects = (await getCollection('projects')).sort(
 				margin-bottom: 1rem;
 				text-align: center;
 			}
-			ul li:first-child img {
-				width: 100%;
-			}
+			/* ul li:first-child img {
+				maxwidth: 100%;
+			} */
 			ul li:first-child .title {
 				font-size: 2.369rem;
 			}
@@ -109,7 +109,6 @@ const projects = (await getCollection('projects')).sort(
 		<Header />
 		<main>
 			<section>
-				<h1>Projects</h1>
 				{projects.length === 0 ? (
 					<p>No projects yet — check back soon!</p>
 				) : (
@@ -119,7 +118,7 @@ const projects = (await getCollection('projects')).sort(
 								<li>
 									<a href={`/projects/${project.id}/`}>
 										{project.data.heroImage && (
-											<Image width={720} height={360} src={project.data.heroImage} alt="" />
+											<Image src={project.data.heroImage} width={Math.min(project.data.heroImage.width, 720)} alt="" />
 										)}
 										<h4 class="title">{project.data.title}</h4>
 										<p class="date">

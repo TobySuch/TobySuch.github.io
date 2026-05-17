@@ -106,7 +106,7 @@ const { title, description, pubDate, updatedDate, heroImage, siteUrl, repoUrl, t
 		<main>
 			<article>
 				<div class="hero-image">
-					{heroImage && <Image width={1020} height={510} src={heroImage} alt="" />}
+					{heroImage && <Image src={heroImage} width={Math.min(heroImage.width, 720)} alt="" />}
 				</div>
 				<div class="prose">
 					<div class="title">

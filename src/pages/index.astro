@@ -142,7 +142,7 @@ const latestProjects = (await getCollection('projects'))
 							<li>
 								<a href={`/projects/${project.id}`}>
 									{project.data.heroImage && (
-										<Image width={720} height={360} src={project.data.heroImage} alt="" />
+										<Image src={project.data.heroImage} width={Math.min(project.data.heroImage.width, 720)} alt="" />
 									)}
 									<h4 class="blog-title">{project.data.title}</h4>
 									<p class="blog-date">

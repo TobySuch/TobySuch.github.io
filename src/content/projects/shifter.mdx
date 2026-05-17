@@ -1,15 +1,15 @@
 ---
 # Required fields
-title: "My Project Name"
-description: "A short description of what this project does and why it's interesting."
-pubDate: "2026-01-01"
+title: "Shifter"
+description: "A simple, self-hosted file-sharing web app "
+pubDate: "2022-11-27"
 
 # Optional fields — uncomment and fill in as needed:
-# updatedDate: "2026-06-01"
-# heroImage: "../../assets/projects/my-project/hero.png"
+updatedDate: "2026-05-17"
+heroImage: "../../assets/projects/shifter/hero.png"
 # siteUrl: "https://myproject.example.com"
-# repoUrl: "https://github.com/TobySuch/my-project"
-# tags: ["Python", "FastAPI", "PostgreSQL"]
+repoUrl: "https://github.com/TobySuch/Shifter"
+tags: ["Python", "Django", "PostgreSQL"]
 ---
 
 {/*
@@ -45,23 +45,12 @@ import { Image } from 'astro:assets';
 
 ## Overview
 
-Describe what this project is and what problem it solves.
-
+Shifter is a simple self-hosted file-sharing web app built using Django and Tailwind. It allows you to quickly and easily upload files and share download links with others.
 ## Features
 
-- Feature one
-- Feature two
-- Feature three
-
-## How it works
-
-Walk through the interesting technical details here. You can embed images inline:
-
-```
-import screenshot from '../../assets/projects/my-project/screenshot.png';
-<Image src={screenshot} alt="Screenshot" width={720} height={400} />
-```
-
-## What I learned
-
-Reflect on interesting challenges or takeaways from building this.
+- Upload files and share download links with others.
+- Upload multiple files and automatically create a zip archive.
+- Files are automatically deleted once they expire.
+- Manage your uploaded files, delete them early.
+- Create multiple accounts to allow others to upload files.
+- Admin interface for managing site settings such as maximum file size and expiry time.
