@@ -134,6 +134,7 @@ const latestProjects = (await getCollection('projects'))
 			<p>
 				Check out my <a href="/blog">blog</a> for thoughts on tech, my <a href="https://github.com/TobySuch">GitHub</a> for my side projects, or connect with me on <a href="https://www.linkedin.com/in/tobysuch/">LinkedIn</a>.
 			</p>
+			<div style="gap: 2em; display: flex; flex-wrap: wrap; justify-content: center;">
 			{ latestProjects.length > 0 && (
 				<section>
 					<h2>Latest Projects</h2>
@@ -199,6 +200,7 @@ const latestProjects = (await getCollection('projects'))
 					</ul>
 				</section>
 			)}
+			</div>
 		</main>
 		<Footer />
 	</body>
