@@ -4,25 +4,33 @@ import type { GameState } from '../game/gameLogic'
 interface StatusBarProps {
   state: GameState
   onReset: () => void
+  isAiThinking: boolean
 }
 
-export function StatusBar({ state, onReset }: StatusBarProps) {
+export function StatusBar({ state, onReset, isAiThinking }: StatusBarProps) {
   const { gameResult, currentPlayer } = state
 
   return (
     <div aria-live="polite" className="text-center min-h-[4rem] flex flex-col items-center justify-center gap-3">
       {gameResult === null ? (
-        <p className="text-lg font-semibold text-slate-200">
-          <span
-            className={clsx(
-              'font-black text-xl',
-              currentPlayer === 'X' ? 'text-emerald-400' : 'text-rose-400',
-            )}
-          >
-            {currentPlayer}
-          </span>
-          {''}'s turn
-        </p>
+        isAiThinking ? (
+          <p className="text-lg font-semibold text-slate-400 flex items-center gap-2">
+            <span className="inline-block w-2.5 h-2.5 rounded-full bg-rose-400 animate-pulse" />
+            AI is thinking...
+          </p>
+        ) : (
+          <p className="text-lg font-semibold text-slate-200">
+            <span
+              className={clsx(
+                'font-black text-xl',
+                currentPlayer === 'X' ? 'text-emerald-400' : 'text-rose-400',
+              )}
+            >
+              {currentPlayer}
+            </span>
+            {''}'s turn
+          </p>
+        )
       ) : (
         <>
           <p className="text-xl font-bold text-white">
