@@ -37,6 +37,12 @@ export function Game() {
         legalMoves={legalMoves}
         onMove={game.makeMove}
       />
+      <button
+        onClick={handleReset}
+        className="text-sm text-slate-500 hover:text-slate-300 transition-colors focus-visible:outline-2 focus-visible:outline-blue-400 focus-visible:outline-offset-2 rounded"
+      >
+        ← Menu
+      </button>
     </div>
   )
 }
