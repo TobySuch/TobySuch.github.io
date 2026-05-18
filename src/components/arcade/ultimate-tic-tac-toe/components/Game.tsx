@@ -9,7 +9,8 @@ export function Game() {
   const game = useGame()
   const [gameStarted, setGameStarted] = useState(false)
 
-  const legalMoves = getLegalMoves(game.state)
+  const isHumanTurn = game.mode === 'two-player' || game.state.currentPlayer !== game.aiPlayer
+  const legalMoves = (isHumanTurn && !game.isAiThinking) ? getLegalMoves(game.state) : []
 
   const handleReset = () => {
     game.resetGame()
@@ -19,14 +20,18 @@ export function Game() {
   if (!gameStarted) {
     return (
       <div className="min-h-screen bg-slate-950 flex items-center justify-center">
-        <ModeSelector onStart={(mode) => { game.setMode(mode); setGameStarted(true) }} />
+        <ModeSelector onStart={(mode, iterations) => {
+          game.setMode(mode)
+          game.setAiIterations(iterations)
+          setGameStarted(true)
+        }} />
       </div>
     )
   }
 
   return (
     <div className="min-h-screen bg-slate-950 text-white flex flex-col items-center justify-center gap-6 p-6">
-      <StatusBar state={game.state} onReset={handleReset} />
+      <StatusBar state={game.state} onReset={handleReset} isAiThinking={game.isAiThinking} />
       <MetaBoard
         state={game.state}
         legalMoves={legalMoves}
