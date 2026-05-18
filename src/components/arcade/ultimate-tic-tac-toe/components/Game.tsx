@@ -1,9 +1,10 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useGame } from '../hooks/useGame'
 import { getLegalMoves } from '../game/gameLogic'
 import { ModeSelector } from './ModeSelector'
 import { MetaBoard } from './MetaBoard'
 import { StatusBar } from './StatusBar'
+import { trackGameStart, trackGameQuit, trackGameComplete } from '../utils/analytics'
 
 export function Game() {
   const game = useGame()
@@ -12,7 +13,16 @@ export function Game() {
   const isHumanTurn = game.mode === 'two-player' || game.state.currentPlayer !== game.aiPlayer
   const legalMoves = (isHumanTurn && !game.isAiThinking) ? getLegalMoves(game.state) : []
 
+  useEffect(() => {
+    if (gameStarted && game.state.gameResult !== null) {
+      trackGameComplete(game.mode, game.aiIterations, game.state.gameResult)
+    }
+  }, [game.state.gameResult])
+
   const handleReset = () => {
+    if (gameStarted && game.state.gameResult === null) {
+      trackGameQuit(game.mode, game.aiIterations)
+    }
     game.resetGame()
     setGameStarted(false)
   }
@@ -23,6 +33,7 @@ export function Game() {
         <ModeSelector onStart={(mode, iterations) => {
           game.setMode(mode)
           game.setAiIterations(iterations)
+          trackGameStart(mode, iterations)
           setGameStarted(true)
         }} />
       </div>
