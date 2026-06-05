@@ -1,6 +1,6 @@
 ---
 title: "Protecting Your Django Media"
-description: "Lorem ipsum dolor sit amet"
+description: "Learn how to use NGINX X-accel to proxy Django media files through your application — enabling per-request authentication, access control, and logging without sacrificing serving performance."
 pubDate: "2022-04-28"
 updatedDate: "2025-08-18"
 heroImage: "../../assets/blog/protecting-your-django-media/hero.jpg"
