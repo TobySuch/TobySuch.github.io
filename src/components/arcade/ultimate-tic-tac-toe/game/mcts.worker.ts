@@ -63,7 +63,11 @@ function backpropagate(node: MCTSNode, result: BoardResult): void {
   }
 }
 
-export function mcts(rootState: GameState, iterations: number): [number, number] {
+export function mcts(rootState: GameState, iterations: number, epsilon = 0): [number, number] {
+  const moves = getLegalMoves(rootState)
+  if (epsilon > 0 && Math.random() < epsilon) {
+    return moves[Math.floor(Math.random() * moves.length)]
+  }
   const root: MCTSNode = {
     state: rootState,
     move: null,
@@ -71,7 +75,7 @@ export function mcts(rootState: GameState, iterations: number): [number, number]
     children: [],
     wins: 0,
     visits: 0,
-    untriedMoves: getLegalMoves(rootState),
+    untriedMoves: moves,
   }
 
   for (let i = 0; i < iterations; i++) {
@@ -108,8 +112,6 @@ export function mcts(rootState: GameState, iterations: number): [number, number]
 
   // Return the child of root with the highest visit count
   if (root.children.length === 0) {
-    // Fallback: shouldn't happen for a non-terminal state, but be safe
-    const moves = getLegalMoves(rootState)
     return moves[Math.floor(Math.random() * moves.length)]
   }
 
@@ -120,10 +122,10 @@ export function mcts(rootState: GameState, iterations: number): [number, number]
   return best.move!
 }
 
-self.onmessage = (e: MessageEvent<{ state: GameState; iterations: number }>) => {
-  const { state, iterations } = e.data
+self.onmessage = (e: MessageEvent<{ state: GameState; iterations: number; epsilon?: number }>) => {
+  const { state, iterations, epsilon } = e.data
   const t0 = performance.now()
-  const move = mcts(state, iterations)
+  const move = mcts(state, iterations, epsilon ?? 0)
   self.postMessage({
     move,
     iterations,
