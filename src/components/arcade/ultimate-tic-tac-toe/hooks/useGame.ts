@@ -13,11 +13,12 @@ export interface UseGameReturn {
   mode: 'two-player' | 'vs-ai'
   aiPlayer: Player
   aiIterations: number
+  aiEpsilon: number
   isAiThinking: boolean
   makeMove: (boardIdx: number, cellIdx: number) => void
   resetGame: () => void
   setMode: (mode: 'two-player' | 'vs-ai') => void
-  setAiIterations: (n: number) => void
+  setAiParams: (iterations: number, epsilon: number) => void
 }
 
 const AI_PLAYER: Player = 'O'
@@ -30,6 +31,7 @@ export function useGame(): UseGameReturn {
   const [state, setState] = useState<GameState>(createInitialState)
   const [mode, setModeState] = useState<'two-player' | 'vs-ai'>('two-player')
   const [aiIterations, setAiIterationsState] = useState<number>(2000)
+  const [aiEpsilon, setAiEpsilonState] = useState<number>(0)
   const [isAiThinking, setIsAiThinking] = useState<boolean>(false)
   const workerRef = useRef<Worker | null>(null)
 
@@ -64,7 +66,7 @@ export function useGame(): UseGameReturn {
       setIsAiThinking(false)
     }
 
-    worker.postMessage({ state, iterations: aiIterations })
+    worker.postMessage({ state, iterations: aiIterations, epsilon: aiEpsilon })
   // aiIterations intentionally omitted: difficulty can't change mid-game in the current UI
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state, mode, isAiThinking])
@@ -90,8 +92,9 @@ export function useGame(): UseGameReturn {
     setModeState(m)
   }, [])
 
-  const setAiIterations = useCallback((n: number) => {
-    setAiIterationsState(n)
+  const setAiParams = useCallback((iterations: number, epsilon: number) => {
+    setAiIterationsState(iterations)
+    setAiEpsilonState(epsilon)
   }, [])
 
   return {
@@ -99,10 +102,11 @@ export function useGame(): UseGameReturn {
     mode,
     aiPlayer: AI_PLAYER,
     aiIterations,
+    aiEpsilon,
     isAiThinking,
     makeMove,
     resetGame,
     setMode,
-    setAiIterations,
+    setAiParams,
   }
 }

@@ -30,9 +30,9 @@ export function Game() {
   if (!gameStarted) {
     return (
       <div className="min-h-screen bg-slate-950 flex items-center justify-center">
-        <ModeSelector onStart={(mode, iterations) => {
+        <ModeSelector onStart={(mode, iterations, epsilon) => {
           game.setMode(mode)
-          game.setAiIterations(iterations)
+          game.setAiParams(iterations, epsilon)
           trackGameStart(mode, iterations)
           setGameStarted(true)
         }} />

@@ -2,11 +2,12 @@ import { clsx } from 'clsx'
 import { useState } from 'react'
 
 interface ModeSelectorProps {
-  onStart: (mode: 'two-player' | 'vs-ai', iterations: number) => void
+  onStart: (mode: 'two-player' | 'vs-ai', iterations: number, epsilon: number) => void
 }
 
 const DIFFICULTY_LABELS = ['Easy', 'Medium', 'Hard', 'Expert']
-const DIFFICULTY_ITERATIONS = [500, 2000, 8000, 25000]
+const DIFFICULTY_ITERATIONS = [100, 500, 3000, 15000]
+const DIFFICULTY_EPSILON = [0.75, 0.35, 0, 0]
 
 export function ModeSelector({ onStart }: ModeSelectorProps) {
   const [selectedMode, setSelectedMode] = useState<'two-player' | 'vs-ai'>('two-player')
@@ -69,7 +70,7 @@ export function ModeSelector({ onStart }: ModeSelectorProps) {
       </div>
 
       <button
-        onClick={() => onStart(selectedMode, DIFFICULTY_ITERATIONS[difficultyIdx])}
+        onClick={() => onStart(selectedMode, DIFFICULTY_ITERATIONS[difficultyIdx], DIFFICULTY_EPSILON[difficultyIdx])}
         className="px-10 py-3 bg-blue-600 hover:bg-blue-500 rounded-xl font-bold text-lg text-white transition-colors focus-visible:outline-2 focus-visible:outline-blue-400 focus-visible:outline-offset-2 cursor-pointer"
       >
         Start Game
