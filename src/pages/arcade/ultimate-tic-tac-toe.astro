@@ -37,13 +37,19 @@ import '../../components/arcade/ultimate-tic-tac-toe/game.css';
         text-align: center;
         padding: 0.5rem;
         font-size: 0.75rem;
-        color: rgb(71, 85, 105);
+        color: rgb(100, 116, 139);
         pointer-events: none;
+      }
+      footer a {
+        color: inherit;
+        pointer-events: auto;
       }
     </style>
   </head>
   <body>
     <App client:load />
-    <footer>© Copyright Toby Such 2026. All rights reserved.</footer>
+    <footer>
+      <a href="/arcade/">← Arcade</a> · © Copyright Toby Such 2026. All rights reserved.
+    </footer>
   </body>
 </html>

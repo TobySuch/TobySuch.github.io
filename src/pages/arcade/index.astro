@@ -1,0 +1,61 @@
+---
+import "../../styles/arcade.css";
+import { arcadeGames } from "../../data/arcadeGames";
+
+const title = "Arcade | Toby Such";
+const description = "A small collection of games and starters.";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+
+    <meta property="twitter:card" content="summary" />
+    <meta property="twitter:url" content={Astro.url} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+
+    <script defer data-domain="tobysuch.uk" src="https://plausible.tobysuch.uk/js/script.js"></script>
+  </head>
+  <body class="min-h-screen bg-slate-950 text-white">
+    <main class="mx-auto max-w-3xl px-4 py-12">
+      <h1 class="text-4xl font-black tracking-tight">Arcade</h1>
+      <p class="mt-2 text-slate-400">{description}</p>
+
+      <ul class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2">
+        {
+          arcadeGames.map((game) => (
+            <li>
+              <a
+                href={`/arcade/${game.slug}/`}
+                class="block h-full rounded-xl border border-slate-800 bg-slate-900 p-5 transition-colors hover:border-blue-500 hover:bg-slate-800"
+              >
+                <span class="text-3xl" aria-hidden="true">
+                  {game.icon}
+                </span>
+                <h2 class="mt-2 text-lg font-semibold text-white">{game.title}</h2>
+                <p class="mt-1 text-sm text-slate-400">{game.description}</p>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </main>
+    <footer class="pb-4 text-center text-xs text-slate-500">© Copyright Toby Such 2026. All rights reserved.</footer>
+  </body>
+</html>
