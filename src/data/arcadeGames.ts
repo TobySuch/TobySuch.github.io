@@ -18,4 +18,10 @@ export const arcadeGames: ArcadeGame[] = [
     description: "A random number and ten KS3 maths questions built around it — round it, factor it, spot the pattern.",
     icon: "🔢",
   },
+  {
+    slug: "countdown-numbers",
+    title: "Countdown Numbers Round",
+    description: "Pick 2 big and 4 small numbers, then race to reach the target using +, −, × and ÷.",
+    icon: "🧮",
+  },
 ];
