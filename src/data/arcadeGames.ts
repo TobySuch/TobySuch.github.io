@@ -12,4 +12,10 @@ export const arcadeGames: ArcadeGame[] = [
     description: "A strategic twist on the classic game — every move sends your opponent to a new board.",
     icon: "⭕",
   },
+  {
+    slug: "number-of-the-day",
+    title: "Number of the Day",
+    description: "A random number and ten KS3 maths questions built around it — round it, factor it, spot the pattern.",
+    icon: "🔢",
+  },
 ];
