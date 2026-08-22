@@ -1,0 +1,55 @@
+---
+import App from '../../components/arcade/times-table-check/App';
+import '../../components/arcade/times-table-check/game.css';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>Times Table Check</title>
+    <meta name="title" content="Times Table Check" />
+    <meta name="description" content="Cover the grid, recall the answer, then click to check yourself — quick times tables practice." />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:title" content="Times Table Check" />
+    <meta property="og:description" content="Cover the grid, recall the answer, then click to check yourself — quick times tables practice." />
+
+    <meta property="twitter:card" content="summary" />
+    <meta property="twitter:url" content={Astro.url} />
+    <meta property="twitter:title" content="Times Table Check" />
+    <meta property="twitter:description" content="Cover the grid, recall the answer, then click to check yourself — quick times tables practice." />
+
+    <script defer data-domain="tobysuch.uk" src="https://plausible.tobysuch.uk/js/script.js"></script>
+    <style>
+      footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        text-align: center;
+        padding: 0.5rem;
+        font-size: 0.75rem;
+        color: rgb(100, 116, 139);
+        pointer-events: none;
+      }
+      footer a {
+        color: inherit;
+        pointer-events: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <App client:only="react" />
+    <footer>
+      <a href="/arcade/">← Arcade</a> · © Copyright Toby Such 2026. All rights reserved.
+    </footer>
+  </body>
+</html>

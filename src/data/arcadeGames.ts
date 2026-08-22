@@ -24,4 +24,10 @@ export const arcadeGames: ArcadeGame[] = [
     description: "Pick 2 big and 4 small numbers, then race to reach the target using +, −, × and ÷.",
     icon: "🧮",
   },
+  {
+    slug: "times-table-check",
+    title: "Times Table Check",
+    description: "Cover the grid, recall the answer, then click to check yourself — quick times tables practice.",
+    icon: "✖️",
+  },
 ];
