@@ -1,0 +1,55 @@
+---
+import App from '../../components/arcade/number-of-the-day/App';
+import '../../components/arcade/number-of-the-day/game.css';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>Number of the Day</title>
+    <meta name="title" content="Number of the Day" />
+    <meta name="description" content="A random number and ten Key Stage 3 maths questions built around it — rounding, primes, factors, sequences and more. Reveal the answers when you're ready." />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:title" content="Number of the Day" />
+    <meta property="og:description" content="A random number and ten Key Stage 3 maths questions built around it — rounding, primes, factors, sequences and more. Reveal the answers when you're ready." />
+
+    <meta property="twitter:card" content="summary" />
+    <meta property="twitter:url" content={Astro.url} />
+    <meta property="twitter:title" content="Number of the Day" />
+    <meta property="twitter:description" content="A random number and ten Key Stage 3 maths questions built around it — rounding, primes, factors, sequences and more. Reveal the answers when you're ready." />
+
+    <script defer data-domain="tobysuch.uk" src="https://plausible.tobysuch.uk/js/script.js"></script>
+    <style>
+      footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        text-align: center;
+        padding: 0.5rem;
+        font-size: 0.75rem;
+        color: rgb(100, 116, 139);
+        pointer-events: none;
+      }
+      footer a {
+        color: inherit;
+        pointer-events: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <App client:load />
+    <footer>
+      <a href="/arcade/">← Arcade</a> · © Copyright Toby Such 2026. All rights reserved.
+    </footer>
+  </body>
+</html>
