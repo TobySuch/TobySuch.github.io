@@ -14,8 +14,10 @@
     "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.7.3",
     "astro": "^7.2.9",
+    "chess.js": "^1.4.0",
     "clsx": "^2.1.1",
     "react": "^19.2.8",
+    "react-chessboard": "^5.12.1",
     "react-dom": "^19.2.8",
     "sharp": "^0.35.4"
   },

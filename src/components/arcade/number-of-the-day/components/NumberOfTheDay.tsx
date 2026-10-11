@@ -24,7 +24,7 @@ export function NumberOfTheDay() {
 
         <button
           onClick={handleToggleReveal}
-          className="px-8 py-3 bg-blue-600 hover:bg-blue-500 rounded-lg text-lg font-semibold text-white transition-colors focus-visible:outline-2 focus-visible:outline-blue-400 focus-visible:outline-offset-2"
+          className="px-8 py-3 bg-blue-600 hover:bg-blue-500 rounded-lg text-lg font-semibold text-white transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-blue-400 focus-visible:outline-offset-2"
         >
           {revealed ? 'Hide answers' : 'Reveal all answers'}
         </button>

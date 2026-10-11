@@ -1,0 +1,61 @@
+---
+// Standalone document shell for arcade game pages. Deliberately independent of the
+// main site's BaseHead/Header/Footer — see "Arcade / Games" in CLAUDE.md.
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+
+    <meta property="twitter:card" content="summary" />
+    <meta property="twitter:url" content={Astro.url} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+
+    <script defer data-domain="tobysuch.uk" src="https://plausible.tobysuch.uk/js/script.js"></script>
+    <style>
+      footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        text-align: center;
+        padding: 0.5rem;
+        font-size: 0.75rem;
+        color: rgb(100, 116, 139);
+        pointer-events: none;
+      }
+      footer a {
+        color: inherit;
+        pointer-events: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <slot />
+    <footer>
+      <a href="/arcade/">← Arcade</a> · © Copyright Toby Such 2026. All rights reserved.
+    </footer>
+  </body>
+</html>
