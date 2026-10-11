@@ -12,7 +12,7 @@ export function SolutionPanel({ revealed, result, onReveal }: SolutionPanelProps
       <button
         type="button"
         onClick={onReveal}
-        className="rounded-lg border border-slate-700 px-8 py-3 text-lg font-semibold text-slate-300 transition-colors hover:border-slate-500 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400"
+        className="rounded-lg border border-slate-700 px-8 py-3 text-lg font-semibold text-slate-300 transition-colors cursor-pointer hover:border-slate-500 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-400"
       >
         Reveal solution
       </button>

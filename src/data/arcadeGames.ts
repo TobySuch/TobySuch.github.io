@@ -30,4 +30,10 @@ export const arcadeGames: ArcadeGame[] = [
     description: "Cover the grid, recall the answer, then click to check yourself — quick times tables practice.",
     icon: "✖️",
   },
+  {
+    slug: "chess",
+    title: "Chess",
+    description: "The classic game for two players on one device — drag or click to move, with full rules.",
+    icon: "♟️",
+  },
 ];

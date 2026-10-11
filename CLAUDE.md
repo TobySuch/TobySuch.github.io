@@ -46,11 +46,17 @@ File-based routing in `src/pages/`:
 
 `/arcade/` is a small, intentionally hidden section of games. It is never linked from `Header.astro` or any other main-site page — discoverable only via `/arcade/` or a direct URL to a game. It's still crawlable (no sitemap exclusion), consistent with the rest of the site.
 
-Arcade pages don't use the main site's `BaseHead.astro` / `Header.astro` / `Footer.astro`, so they're visually and structurally independent of the blog/projects/about design. To add a new game:
+Arcade pages don't use the main site's `BaseHead.astro` / `Header.astro` / `Footer.astro`, so they're visually and structurally independent of the blog/projects/about design. Game pages instead share `src/layouts/ArcadeGameLayout.astro`, which provides the full `<html>`/`<head>` document (favicon, canonical, title/description, OG/Twitter tags, the Plausible script — the site-wide copy in `BaseHead.astro` isn't used here) and the fixed "← Arcade" footer. To add a new game:
 
-1. Create `src/pages/arcade/<slug>.astro` as a standalone Astro page — its own full `<html>`/`<head>` document (see `ultimate-tic-tac-toe.astro` for the template: favicon, canonical, title/description, OG/Twitter tags).
+1. Create `src/pages/arcade/<slug>.astro` that wraps the game's React `App` in `<ArcadeGameLayout title="…" description="…">` (see `chess.astro`).
 2. Put supporting components/logic under `src/components/arcade/<slug>/`.
-3. Import `src/styles/arcade.css` (a one-line `@import "tailwindcss";`) rather than the site's `global.css`, so the game can be styled with Tailwind utility classes independent of the main site's design system.
-4. Manually include the Plausible script tag in the page `<head>` (the site-wide copy in `BaseHead.astro` isn't used here): `<script defer data-domain="tobysuch.uk" src="https://plausible.tobysuch.uk/js/script.js"></script>`.
-5. Register the game in `src/data/arcadeGames.ts` (slug, title, description, emoji icon) so it appears as a card on `/arcade/`.
-6. Add a link back to `/arcade/` somewhere on the page (see the footer pattern in `ultimate-tic-tac-toe.astro`).
+3. Import the game's `game.css` (a one-line `@import "tailwindcss";`) in the page rather than the site's `global.css`, so the game can be styled with Tailwind utility classes independent of the main site's design system.
+4. Register the game in `src/data/arcadeGames.ts` (slug, title, description, emoji icon) so it appears as a card on `/arcade/`.
+
+#### Chess engine feature flag
+
+Chess's "vs Computer" mode talks to a separate engine API and is gated by `PUBLIC_CHESS_ENGINE_URL` (see `src/components/arcade/chess/engine/`). Set it in a local `.env` (gitignored) to enable the mode; CI doesn't set it, so production shows "coming soon" and the engine client is tree-shaken out of the bundle. The API contract assumed by the client lives entirely in `engineClient.ts`.
+
+## Conventions
+
+- Every clickable `<button>` (and any other clickable non-link element) must have a pointer cursor — `cursor-pointer` in Tailwind, or `cursor: pointer` in plain CSS. Tailwind v4's preflight no longer sets it on buttons, so it's easy to miss on text-style buttons like "← Menu". Pair it with `disabled:cursor-not-allowed` on buttons that can be disabled.

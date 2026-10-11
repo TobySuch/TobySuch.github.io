@@ -1,0 +1,12 @@
+---
+import ArcadeGameLayout from '../../layouts/ArcadeGameLayout.astro';
+import App from '../../components/arcade/chess/App';
+import '../../components/arcade/chess/game.css';
+---
+
+<ArcadeGameLayout
+  title="Chess"
+  description="Play chess against a friend on the same device — drag or click to move, with full rules including castling, en passant and promotion."
+>
+  <App client:load />
+</ArcadeGameLayout>
