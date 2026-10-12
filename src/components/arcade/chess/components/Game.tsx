@@ -4,6 +4,8 @@ import { ModeSelector } from './ModeSelector'
 import { ChessBoardView } from './ChessBoardView'
 import { StatusBar } from './StatusBar'
 import { MoveList } from './MoveList'
+import { EngineAnalysisPanel } from './EngineAnalysisPanel'
+import { ENGINE_ENABLED } from '../engine/featureFlag'
 import { trackGameStart, trackGameQuit, trackGameComplete } from '../utils/analytics'
 
 const controlClass =
@@ -66,6 +68,8 @@ export function Game() {
         </div>
         <MoveList history={game.history} />
       </div>
+
+      {ENGINE_ENABLED && game.mode === 'vs-engine' && <EngineAnalysisPanel analysis={game.engineAnalysis} />}
 
       <div className="flex flex-wrap justify-center gap-2">
         <button onClick={game.flip} className={controlClass}>Flip board</button>

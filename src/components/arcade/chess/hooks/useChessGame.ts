@@ -1,7 +1,7 @@
 import { useState, useCallback, useEffect, useRef } from 'react'
 import { Chess, type Color, type Move, type PieceSymbol, type Square } from 'chess.js'
 import { ENGINE_ENABLED } from '../engine/featureFlag'
-import { getEngineMove } from '../engine/engineClient'
+import { getEngineMove, type EngineLine } from '../engine/engineClient'
 
 export type GameMode = 'two-player' | 'vs-engine'
 
@@ -18,6 +18,13 @@ export interface GameResult {
   reason: ResultReason
 }
 
+// The engine's search results for the position it last moved from.
+export interface EngineAnalysis {
+  fen: string
+  move: string
+  lines: EngineLine[]
+}
+
 export type PromotionPiece = Extract<PieceSymbol, 'q' | 'r' | 'b' | 'n'>
 
 export interface UseChessGameReturn {
@@ -32,6 +39,7 @@ export interface UseChessGameReturn {
   orientation: Color
   isEngineThinking: boolean
   engineError: string | null
+  engineAnalysis: EngineAnalysis | null
   canHumanMove: boolean
   canUndo: boolean
   start: (mode: GameMode, humanColor: Color) => void
@@ -79,6 +87,7 @@ export function useChessGame(): UseChessGameReturn {
   const [resignedBy, setResignedBy] = useState<Color | null>(null)
   const [isEngineThinking, setIsEngineThinking] = useState(false)
   const [engineError, setEngineError] = useState<string | null>(null)
+  const [engineAnalysis, setEngineAnalysis] = useState<EngineAnalysis | null>(null)
   const abortRef = useRef<AbortController | null>(null)
 
   const engineColor = other(humanColor)
@@ -113,8 +122,9 @@ export function useChessGame(): UseChessGameReturn {
     setIsEngineThinking(true)
 
     getEngineMove(requestFen, controller.signal)
-      .then(uci => {
+      .then(({ move: uci, lines }) => {
         if (controller.signal.aborted || chess.fen() !== requestFen) return
+        setEngineAnalysis({ fen: requestFen, move: uci, lines })
         const applied = safeMove(chess, uci.slice(0, 2), uci.slice(2, 4), uci[4])
         if (!applied) setEngineError(`Engine returned an illegal move (${uci})`)
         bump()
@@ -160,6 +170,7 @@ export function useChessGame(): UseChessGameReturn {
     while (vsEngine && chess.turn() === engineColor && chess.history().length > 0) {
       chess.undo()
     }
+    setEngineAnalysis(null)
     bump()
   }, [chess, canUndo, vsEngine, engineColor, cancelEngine, bump])
 
@@ -173,6 +184,7 @@ export function useChessGame(): UseChessGameReturn {
     cancelEngine()
     chess.reset()
     setResignedBy(null)
+    setEngineAnalysis(null)
     bump()
   }, [chess, cancelEngine, bump])
 
@@ -198,6 +210,7 @@ export function useChessGame(): UseChessGameReturn {
     orientation,
     isEngineThinking,
     engineError,
+    engineAnalysis,
     canHumanMove,
     canUndo,
     start,
