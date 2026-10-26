@@ -9,6 +9,13 @@ import Header from '../components/Header.astro';
 type Props = CollectionEntry<'projects'>['data'];
 
 const { title, description, pubDate, updatedDate, heroImage, siteUrl, repoUrl, tags } = Astro.props;
+
+// Tag outbound project links so the project's analytics can attribute the visit
+const siteHref = siteUrl && (() => {
+	const url = new URL(siteUrl);
+	url.searchParams.set('ref', 'tobysuch.uk');
+	return url.toString();
+})();
 ---
 
 <html lang="en">
@@ -124,7 +131,7 @@ const { title, description, pubDate, updatedDate, heroImage, siteUrl, repoUrl, t
 						{(siteUrl || repoUrl) && (
 							<div class="project-links">
 								{siteUrl && (
-									<a href={siteUrl} target="_blank" rel="noopener noreferrer" class="link-site">
+									<a href={siteHref} target="_blank" rel="noopener" class="link-site">
 										<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 											<path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
 											<polyline points="15 3 21 3 21 9" />
